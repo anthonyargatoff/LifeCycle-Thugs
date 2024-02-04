@@ -1,0 +1,30 @@
+
+User Stories
+
+
+As a user, I want to view data in a visulization, so that I can be informed.
+    Acceptance: landing on site displays most general visulization of all data.
+
+As a user, I want to filter the data in a visulization, so that I can customize my information.
+    Acceptance: user may select from drop down menus different criteria to filter the data. (ie. Magnitutde > 5, location: North America)
+
+As a user, I want to be able to share my page results on social media, so that I can show the site to others.
+    Acceptance: user may click on a share link that will produce a link to the site and a text blurb encouraging clicking on it. The link should take others to the site with the same filter settings as the user currrntly has.
+
+As a user, I want to change between optional layers/additional data on the visulization, so that I can further customize my visualization.
+    Acceptance: user may select toggleable options on the map, such as topography view or satellite view, and may add or remove additional markings, such as major cities or faultlines.
+
+As an admin, I want to be able to view users and modify their account settings, so that I can manage the site
+    Acceptance: Admin view allows the admin to see a list of users, and block/delete them, remove their notificatoins
+
+As an admin, I want to see usage statistics, so that I can understand how the site is being used.
+    Acceptance: Admin view has a page with information on the site, ie. unique visitors, number of total requests, etc.
+
+As a user, I want to be able to set up email notifications for certain kinds of eathquakes, so that I can be informed of new events.
+    Acceptance: user may set up notifications attached to their account that will automatically inform them when a new event occurs that matches their specified criteria, criteria similar to filtering listed above.
+
+As a user, I want to be able to view and manage (modify/delete) my current notifications, so that I can change my mind.
+    Acceptance: user account view presents a list of notifications that have been set up with the ability to add new, edit existing, or delete. 
+
+
+
