@@ -27,4 +27,5 @@ As a user, I want to be able to view and manage (modify/delete) my current notif
     Acceptance: user account view presents a list of notifications that have been set up with the ability to add new, edit existing, or delete. 
 
 
-
+As a user, I want to be able to view predictions for future events, so that I can make decisions about the future.
+	Acceptance: one toggleable option is to display predictions, which are calculated projections of where new events are likely to occur in some time window.
