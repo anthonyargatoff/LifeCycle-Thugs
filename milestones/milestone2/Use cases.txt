@@ -9,41 +9,132 @@ Use Cases:
 -Main scenario - 
     1. User accesses site via link or search
     2. Webpage loads visualization
-    3. Webpage querys data from database and populates visualizatoin
+    3. Webpage querys data from database and populates visualization
 -Extensions -
     2a. Improper load, issues error message requesting page refresh.
-    3a. Fails to properly access database, 
+    3a. Fails to properly access database, requests refresh.
 
 
+2. Filter data
+-Primary actor - User
+-Description - Describes the process to filter the data displayed
+-Precondition - User successfully connects to site
+-Postcondition - User views altered visualization
+-Main scenario - 
+    1. User selects an attribute to filter by
+    2. User selects a condition, (<,>,interval)
+    3. User sends request
+    4. Site applies filter to data matching user entry
+    5. Site updates visualization with new dataset 
+-Extensions -
+    3a. Request faulty, due to poor format or other, please try again. 
+    5a. Fails to properly load visualization, requests refresh.
 
 
-As a user, I want to view data in a visualization, so that I can be informed.
-    Acceptance: landing on site displays most general visualization of all data.
-
-As a user, I want to filter the data in a visualization, so that I can customize my information.
-    Acceptance: user may select from drop down menus different criteria to filter the data. (ie. Magnitutde > 5, location: North America)
-
-As a user, I want to be able to share my page results on social media, so that I can show the site to others.
-    Acceptance: user may click on a share link that will produce a link to the site and a text blurb encouraging clicking on it. The link should take others to the site with the same filter settings as the user currrntly has.
-
-As a user, I want to change between optional layers/additional data on the visualization, so that I can further customize my visualization.
-    Acceptance: user may select toggleable options on the map, such as topography view or satellite view, and may add or remove additional markings, such as major cities or faultlines.
-
-As an admin, I want to be able to view users and modify their account settings, so that I can manage the site
-    Acceptance: Admin view allows the admin to see a list of users, and block/delete them, remove their notificatoins
-
-As an admin, I want to see usage statistics, so that I can understand how the site is being used.
-    Acceptance: Admin view has a page with information on the site, ie. unique visitors, number of total requests, etc.
-
-As a user, I want to be able to set up email notifications for certain kinds of earthquakes, so that I can be informed of new events.
-    Acceptance: user may set up notifications attached to their account that will automatically inform them when a new event occurs that matches their specified criteria, criteria similar to filtering listed above.
-
-As a user, I want to be able to view and manage (modify/delete) my current notifications, so that I can change my mind.
-    Acceptance: user account view presents a list of notifications that have been set up with the ability to add new, edit existing, or delete. 
+3. Share Results
+-Primary actor - User
+-Description - Describes the process of sharing results
+-Precondition - User successfully views and customizes visualization
+-Postcondition - User posts link to the site with all settings applied
+-Main scenario - 
+    1. User customizes visualization
+    2. User clicks link to one of displayed social sites
+    3. Webpage copies a link to the users clipboard containing all current page settings.
+    4. Webpage redirects user to the selected social network in a new tab.
+-Extensions -
+    3a. Faulty link is generated, user nuable to share.
 
 
-As a user, I want to be able to view predictions for future events, so that I can make decisions about the future.
-	Acceptance: one toggleable option is to display predictions, which are calculated projections of where new events are likely to occur in some time window.
+4. Layer Map
+-Primary actor - User
+-Description - Describes the process layering map
+-Precondition - User successfully views visualization
+-Postcondition - Different map layers are displayed
+-Main scenario - 
+    1. User selects layers menu on visualization
+    2. User toggles one or more settings options
+    3. Webpage updates its display without refetching data
+-Extensions -
+    2a. Improper load, issues error message requesting page refresh.
+
+
+5. View User info
+-Primary actor - Admin
+-Description - Describes the process of an admin viewing user info.
+-Precondition - Admin login successful
+-Postcondition - Admin accesses user info
+-Main scenario - 
+    1. Admin select view users option
+    2. Page fetches user list from database
+    3. Admin selects a user's account
+    4. Page fetches specific user info from database
+    5. Admin views information
+-Extensions -
+    2a,4a. Fetch fails, refresh requested.
+    5a. Admin may enter new values for fields
+        5a1. Database is updated with new data.
+        5a2. invalid entry for field, request new entry.
+
+
+6. Access usage stats
+-Primary actor - Admin
+-Description - Describes the process of an admin accessing usage stats.
+-Precondition - Admin login successful
+-Postcondition - Admin accesses usage stats
+-Main scenario - 
+    1. Admin select view usage option
+    2. Page fetches stats from database
+    3. Page displays usage stats over time.
+-Extensions -
+    2a. Fetch fails, refresh requested.
+
+
+7. Add Notifications
+-Primary actor - User
+-Description - Describes the process of a User adding a notification.
+-Precondition - User login successful
+-Postcondition - User registers a new notification
+-Main scenario - 
+    1. User selects add notification
+    2. Page presents user with filters for which events should trigger notifications
+    3. User selects options and submits
+    4. Page sends data to the database for storage
+    5. System checks on update if new information matches user filters
+-Extensions -
+    4a. Improper entry, request re-entry from user.
+    5a. If matched, notification sent.
+
+
+8. View Account Settings
+-Primary actor - User
+-Description - Describes the process of a User viewing account settings.
+-Precondition - User login successful
+-Postcondition - User accesses their account settings
+-Main scenario - 
+    1. User selects account settings
+    2. page queries database fo records matching this user.
+    3. Page presents user with all currently active notification settings and recorded user info
+    4. User accesses all account settings. 
+    5. If edited, refresh display.
+-Extensions -
+    4a. User may select edit, Is prompted for input, database updated.
+        4a1. improper entry, try again.
+
+9. View Prediction
+-Primary actor - User
+-Description - Describes the process of a User viewing a prediction.
+-Precondition - User login successful
+-Postcondition - User views prediction
+-Main scenario - 
+    1. User selects view prediction
+    2. page queries database for data
+    3. Calculation is performed to make prediction.
+    4. Page is updated with prediction
+-Extensions -
+    2a. Query fails, please refresh
+    3. Insufficent data, try again later.
+    
+
 
 
 
