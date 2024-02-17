@@ -17,7 +17,7 @@ Below are the lists of requirements.
 - Users will be able to toggle different map views (such as satellite, terrain, etc).
 - Users will be able to log into the system with a username and password.
 - Users will be able to view and edit their profile.
-- Users will be able to receive custom notifications from the system (such as a new earthquake of certain conditions), as well as removing notifications.
+-Users will be able to receive custom notifications from the system (such as a new earthquake of certain conditions), as well as removing notifications via phone/email
 - Users will be able to view earthquake predictions.
 
 ### Functional Requirements:
