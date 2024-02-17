@@ -44,8 +44,26 @@ Use Cases:
 -Extensions -
     3a. Faulty link is generated, user nuable to share.
 
+4. Login 
+-Primary actor - User
+-Description - Describes the process to login
+-Precondition - User accesses website
+-Postcondition - User is logged in
+-Main scenario - 
+    1. User selects login
+    2. User is prompted for login info
+    3. User enters credentials
+    4. Entry is checked against the database
+    5. User is logged in
+-Extensions -
+    2a. user may select register account
+        2a1. user enters new info 
+        2a2. new user added to database
+    4a. records do not match, error message to please try again.
+    4b. User is an admin account. 
+        4b1. Update landing page with admin functionality.
 
-4. Layer Map
+5. Layer Map
 -Primary actor - User
 -Description - Describes the process layering map
 -Precondition - User successfully views visualization
@@ -58,7 +76,7 @@ Use Cases:
     2a. Improper load, issues error message requesting page refresh.
 
 
-5. View User info
+6. View User info
 -Primary actor - Admin
 -Description - Describes the process of an admin viewing user info.
 -Precondition - Admin login successful
@@ -76,7 +94,7 @@ Use Cases:
         5a2. invalid entry for field, request new entry.
 
 
-6. Access usage stats
+7. Access usage stats
 -Primary actor - Admin
 -Description - Describes the process of an admin accessing usage stats.
 -Precondition - Admin login successful
@@ -89,7 +107,7 @@ Use Cases:
     2a. Fetch fails, refresh requested.
 
 
-7. Add Notifications
+8. Add Notifications
 -Primary actor - User
 -Description - Describes the process of a User adding a notification.
 -Precondition - User login successful
@@ -105,7 +123,22 @@ Use Cases:
     5a. If matched, notification sent.
 
 
-8. View Account Settings
+9. Recieve notification
+-Primary actor - System
+-Description - Describes the process of sending a notification.
+-Precondition - User has registered a notification
+-Postcondition - User recieves notification
+-Main scenario - 
+    1. System queries API
+    2. System recieves response, updates database
+    3. System check new data for matches to registered notifications
+    4. System sends notifications
+-Extensions -
+    2a. no response, try again soon
+    3a. No match, no notifications sent
+    
+
+10. View Account Settings
 -Primary actor - User
 -Description - Describes the process of a User viewing account settings.
 -Precondition - User login successful
@@ -120,7 +153,7 @@ Use Cases:
     4a. User may select edit, Is prompted for input, database updated.
         4a1. improper entry, try again.
 
-9. View Prediction
+11. View Prediction
 -Primary actor - User
 -Description - Describes the process of a User viewing a prediction.
 -Precondition - User login successful
