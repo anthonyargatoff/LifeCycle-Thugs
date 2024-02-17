@@ -36,3 +36,4 @@ Below are the lists of requirements.
 ### Non-functional Requirements:
 - The backend programming will be done in python (flask).
 - The system will not display any unnecessary data to other users or administration.
+- The system should be able to respond to input and refresh in a few seconds.
