@@ -1,6 +1,8 @@
+# The following code is the sample code setup code given in the flask application setup documentations
+
 import os
 
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for, request
 
 
 def create_app(test_config=None):
@@ -24,9 +26,18 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    # root page
+    @app.route('/')
+    def landing():
+        return render_template('/index.html')
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
+    
+    @app.route('/map')
+    def map_page():
+        return render_template('/map.html')
 
     return app

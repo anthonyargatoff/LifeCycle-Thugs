@@ -1,0 +1,9 @@
+html {
+    padding: 0px;
+    margin: 0px;
+}
+
+#map {
+    height: 300px;
+    width: 600px;
+}
