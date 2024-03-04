@@ -1,0 +1,50 @@
+
+create table user(
+    userid Integer Auto_Increment,
+    email Varchar(50),
+    password Varchar(50),
+    Primary Key (userid),
+);
+
+-- Don't yet know how we will store these
+-- I suggest: attributes text, for storing list of attributes in the filter as a string ie (magnitude > 5,location < 100km from (long,lat))
+-- parsing the strings into useable conditions would then fall to the program processing them.
+
+create table notification(
+    notifyid Integer Auto_Increment,
+    userid Integer,
+    Primary Key (notifyid),
+    Foreign Key (userid) References user(userid),
+);
+
+create table event(
+    eventid Integer Auto_Increment,
+    title Varchar(50),
+    magnitude Decimal(4,2),
+    time DateTime,
+    tsunami Integer,
+    latitude Decimal(8,4),
+    longitude Decimal(8,4),
+    height Decimal(8,4),    -- need a better name for this 
+    Primary Key (eventid),
+);
+
+
+
+
+
+
+
+-- some examples of API output. Used for determining attributes of event table.
+{"type":"Feature","properties":{"mag":1.1,"place":"Central Alaska","time":1388620046501,"updated":1689800179099,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak01421ig3u","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ak01421ig3u&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":19,"net":"ak","code":"01421ig3u","ids":",ak10992887,ak01421ig3u,","sources":",ak,ak,","types":",associate,origin,phase-data,","nst":null,"dmin":null,"rms":0.57,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.1 - Central Alaska"},"geometry":{"type":"Point","coordinates":[-151.6459,63.102,14.1]},"id":"ak01421ig3u"},
+{"type":"Feature","properties":{"mag":1.2,"place":"7 km SSW of Big Lake, Alaska","time":1388619956476,"updated":1689800177820,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak01421i2zj","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ak01421i2zj&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":22,"net":"ak","code":"01421i2zj","ids":",ak10934318,ak01421i2zj,","sources":",ak,ak,","types":",associate,cap,origin,phase-data,","nst":null,"dmin":null,"rms":0.47,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.2 - 7 km SSW of Big Lake, Alaska"},"geometry":{"type":"Point","coordinates":[-150.0165,61.4581,44.6]},"id":"ak01421i2zj"},
+{"type":"Feature","properties":{"mag":1.4,"place":"32 km N of Petersville, Alaska","time":1388619763623,"updated":1692374394274,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ak01421heui","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ak01421heui&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":30,"net":"ak","code":"01421heui","ids":",ak10992885,ak01421heui,","sources":",ak,ak,","types":",associate,origin,phase-data,","nst":null,"dmin":null,"rms":0.35,"gap":null,"magType":"ml","type":"earthquake","title":"M 1.4 - 32 km N of Petersville, Alaska"},"geometry":{"type":"Point","coordinates":[-150.8276,62.7884,87.6]},"id":"ak01421heui"},
+{"type":"Feature","properties":{"mag":4,"place":"28 km WNW of Coquimbo, Chile","time":1388619735000,"updated":1394151954000,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/usc000mnnn","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=usc000mnnn&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":246,"net":"us","code":"c000mnnn","ids":",usc000mnnn,","sources":",us,","types":",origin,phase-data,","nst":null,"dmin":null,"rms":3.09,"gap":null,"magType":"ml","type":"earthquake","title":"M 4.0 - 28 km WNW of Coquimbo, Chile"},"geometry":{"type":"Point","coordinates":[-71.621,-29.888,40]},"id":"usc000mnnn"},
+{"type":"Feature","properties":{"mag":0.53,"place":"5 km WSW of Cobb, California","time":1388619644020,"updated":1486063047447,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc72134466","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=nc72134466&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"automatic","tsunami":0,"sig":4,"net":"nc","code":"72134466","ids":",nc72134466,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":8,"dmin":0.007207,"rms":0.03,"gap":90,"magType":"md","type":"earthquake","title":"M 0.5 - 5 km WSW of Cobb, California"},"geometry":{"type":"Point","coordinates":[-122.7839966,38.8071671,0.013]},"id":"nc72134466"},
+{"type":"Feature","properties":{"mag":0.7,"place":"6 km E of Mammoth Lakes, California","time":1388619483870,"updated":1486063041500,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nc72134461","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=nc72134461&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":8,"net":"nc","code":"72134461","ids":",nc72134461,","sources":",nc,","types":",nearby-cities,origin,phase-data,scitech-link,","nst":16,"dmin":0.001802,"rms":0.08,"gap":133,"magType":"md","type":"earthquake","title":"M 0.7 - 6 km E of Mammoth Lakes, California"},"geometry":{"type":"Point","coordinates":[-118.8948333,37.6433333,-0.446]},"id":"nc72134461"},
+{"type":"Feature","properties":{"mag":0.47,"place":"11km ESE of Anza, CA","time":1388619402290,"updated":1457688589278,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/ci11408882","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ci11408882&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":3,"net":"ci","code":"11408882","ids":",ci11408882,","sources":",ci,","types":",cap,nearby-cities,origin,phase-data,scitech-link,","nst":17,"dmin":0.04045,"rms":0.09,"gap":92,"magType":"ml","type":"earthquake","title":"M 0.5 - 11km ESE of Anza, CA"},"geometry":{"type":"Point","coordinates":[-116.562,33.5175,8.148]},"id":"ci11408882"},
+{"type":"Feature","properties":{"mag":0.6,"place":"14 km ENE of Hawthorne, Nevada","time":1388619146923,"updated":1530313185339,"tz":null,"url":"https://earthquake.usgs.gov/earthquakes/eventpage/nn00557597","detail":"https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=nn00557597&format=geojson","felt":null,"cdi":null,"mmi":null,"alert":null,"status":"reviewed","tsunami":0,"sig":6,"net":"nn","code":"00557597","ids":",nn00557597,","sources":",nn,","types":",origin,phase-data,","nst":5,"dmin":0.075,"rms":0.1066,"gap":155.68,"magType":"ml","type":"earthquake","title":"M 0.6 - 14 km ENE of Hawthorne, Nevada"},"geometry":{"type":"Point","coordinates":[-118.4646,38.5678,8.7]},"id":"nn00557597"},
+
+
+-- data used: (so far)
+{"type":"Feature","properties":{"mag":1.1,"time":1388620046501,"tsunami":0,"geometry":{"coordinates":[-151.6459,63.102,14.1]}}}
