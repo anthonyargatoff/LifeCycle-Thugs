@@ -5,7 +5,6 @@ import sqlite3;
 con = sqlite3.connect("test.db");
 cursor = con.cursor();
 
-
 #no test for just select, but all tests use select.
 
 # Test that pre-existing table still exists
@@ -33,6 +32,7 @@ def TestInsert(cursor):
     ans = result.fetchall()
     if (ans == [(5, 'fifth'), (6, 'sixth'), (7, 'seventh')]):
         print('Passed Insert');
+        cursor.execute("Delete From T1 Where id > 3");
     else: print('Failed Insert');
 
 TestPersistence(cursor);
