@@ -142,6 +142,3 @@ class EarthquakeApi:
             data.append(jsonExport)
 
         return data
-    
-e = EarthquakeApi("https://earthquake.usgs.gov/fdsnws/event/1/")
-e.getParsedData("1568-01", "1568-01", "testdata")
