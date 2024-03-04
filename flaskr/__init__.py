@@ -29,7 +29,7 @@ def create_app(test_config=None):
     # root page
     @app.route('/')
     def landing():
-        return render_template('/index.html')
+        return render_template('index.html')
 
     # a simple page that says hello
     @app.route('/hello')
@@ -38,6 +38,10 @@ def create_app(test_config=None):
     
     @app.route('/map')
     def map_page():
-        return render_template('/map.html')
+        return render_template('map.html')
+    
+    @app.route('/login')
+    def login_page():
+        return render_template('login.html')
 
     return app
