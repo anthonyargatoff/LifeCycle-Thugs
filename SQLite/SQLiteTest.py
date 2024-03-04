@@ -5,6 +5,9 @@ import sqlite3;
 con = sqlite3.connect("test.db");
 cursor = con.cursor();
 
+
+#no test for just select, but all tests use select.
+
 # Test that pre-existing table still exists
 def TestPersistence(cursor):
     result = cursor.execute("Select * From T1");
@@ -23,6 +26,17 @@ def TestCreate(cursor):
         cursor.execute('Drop Table testTable');
     else: print('Failed Create');
 
+# Test that adding rows works
+def TestInsert(cursor):
+    cursor.execute("Insert Into T1 values(5,'fifth'),(6,'sixth'),(7,'seventh')");
+    result = cursor.execute("Select * From T1 Where id > 3");
+    ans = result.fetchall()
+    if (ans == [(5, 'fifth'), (6, 'sixth'), (7, 'seventh')]):
+        print('Passed Insert');
+    else: print('Failed Insert');
 
 TestPersistence(cursor);
 TestCreate(cursor);
+TestInsert(cursor);
+
+con.close();
