@@ -1,10 +1,9 @@
 import unittest
 import json
 from  EarthquakeApi import EarthquakeApi
+import os
 
 class test_Api(unittest.TestCase):
-
-    testDataFilepath = "testdata"
 
     def setUp(self):
          self.e = EarthquakeApi('https://earthquake.usgs.gov/fdsnws/event/1/')
@@ -20,6 +19,8 @@ class test_Api(unittest.TestCase):
             data2 = json.load(f2)
 
         self.assertEqual(data1["features"][0]["id"], data2["features"][0]["id"])
+        os.remove("testdata/1568_01.json")
+       
 
     def test_getParsedData(self):
         self.e.getParsedData("1568-01", "1568-01", "testdata")
@@ -30,8 +31,11 @@ class test_Api(unittest.TestCase):
             data2 = json.load(f)
         
         self.assertEqual(data1[0]["title"], data2[0]["title"])
+        os.remove("testdata/earthquakesParsed.json")
 
     def test_fetLast24Hours(self):
         self.assertTrue(self.e.getLast24Hours())
+
+
 
 unittest.main()
