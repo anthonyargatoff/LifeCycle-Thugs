@@ -1,0 +1,53 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "generated": 1709522750000,
+        "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1568-01-01&endtime=1568-01-31",
+        "title": "USGS Earthquakes",
+        "status": 200,
+        "api": "1.14.0",
+        "count": 1
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "mag": 4.9,
+                "place": "Near Moodus, Connecticut",
+                "time": -12685939200000,
+                "updated": 1634947222515,
+                "tz": null,
+                "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ushis15680101000000000",
+                "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ushis15680101000000000&format=geojson",
+                "felt": null,
+                "cdi": null,
+                "mmi": null,
+                "alert": null,
+                "status": "reviewed",
+                "tsunami": 0,
+                "sig": 369,
+                "net": "ushis",
+                "code": "15680101000000000",
+                "ids": ",ushis15680101000000000,",
+                "sources": ",ushis,",
+                "types": ",general-header,impact-text,origin,",
+                "nst": null,
+                "dmin": null,
+                "rms": null,
+                "gap": null,
+                "magType": "mw",
+                "type": "earthquake",
+                "title": "M 4.9 - Near Moodus, Connecticut"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -72.5,
+                    41.5,
+                    null
+                ]
+            },
+            "id": "ushis15680101000000000"
+        }
+    ]
+}
