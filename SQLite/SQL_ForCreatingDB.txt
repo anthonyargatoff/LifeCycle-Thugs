@@ -7,6 +7,9 @@ create table user(
 );
 
 -- Don't yet know how we will store these
+-- I suggest: attributes text, for storing list of attributes in the filter as a string ie (magnitude > 5,location < 100km from (long,lat))
+-- parsing the strings into useable conditions would then fall to the program processing them.
+
 create table notification(
     notifyid Integer Auto_Increment,
     userid Integer,
@@ -16,6 +19,7 @@ create table notification(
 
 create table event(
     eventid Integer Auto_Increment,
+    title Varchar(50),
     magnitude Decimal(4,2),
     time DateTime,
     tsunami Integer,
