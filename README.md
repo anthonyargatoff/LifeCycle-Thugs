@@ -37,3 +37,14 @@ Below are the lists of requirements.
 - The backend programming will be done in python (flask).
 - The system will not display any unnecessary data to other users or administration.
 - The system should be able to respond to input and refresh in a few seconds.
+
+
+
+## Running the app
+- first activate your virtual environment in the terminal: on windows: (.venv\Scripts\activate) on mac: (.venv\bin\activate)
+- - if you don't have a virtual environment run the following command: python -m venv .venv (make sure ur in the project directory, in this case you should be in the LifeCycle-Thugs directory)
+- then run the following command to download/make sure all required dependencies are there: pip install -r requirements.txt
+- finally run this command to startup the flask server: flask --app flaskr run --debug (this will startup the development server)
+- then click on the link that the previous command generates and the app will start running in your default browser
+
+- Also if you have the line server extension installed you can just open the __init__.py file and then run the extension and it will open your file directory in your browser, from here navigate to the templates folder and click on any of the html pages to get to the app.
