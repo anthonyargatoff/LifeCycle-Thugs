@@ -8,3 +8,7 @@
 
 #Environments
 .venv
+
+# Pycache
+__pycache__
+*.pyc
