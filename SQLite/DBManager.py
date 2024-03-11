@@ -15,8 +15,9 @@ class DBUser():
             cursor.execute(SQL, params);
             con.commit();
             con.close();
-        except:
-            print("transaction failed");
+        except Exception as e:
+            print("transaction failed: ");
+            print(e);
     
     # Delete user tuple based on email
     def deleteUser(email):
@@ -25,11 +26,12 @@ class DBUser():
             cursor = con.cursor();
             params = (email,);
             SQL = 'Delete From user Where email Like ?';
-            cursor.execute(SQL);
+            cursor.execute(SQL,params);
             con.commit();
             con.close();
-        except:
-            print("transaction failed");
+        except Exception as e:
+            print("transaction failed: ");
+            print(e);
 
     # modify user's email/password based on their userid, which must first be retrieved.
     # if only one field needs modifying, just pass the other as it was retrieved from the database  
@@ -37,20 +39,23 @@ class DBUser():
         try:
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
-            SQL = 'Update user Set email = \'%s\', password = \'%s\' Where id = %s '  % (newEmail,newPassword,id);
-            cursor.execute(SQL);
+            params = (newEmail, newPassword, id);
+            SQL = 'Update user Set email = ?, password = ? Where userid = ? ';
+            cursor.execute(SQL,params);
             con.commit();
             con.close();
-        except:
-            print("transaction failed");
+        except Exception as e:
+            print("transaction failed: ");
+            print(e);
 
     # return true if email/password combo is found in DB, else false. Also false on exception, so we can prompt user to try again.
     def validateUser(email,password):
         try:
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
-            SQL = 'Select email, password From user Where email = \'%s\' and password = \'%s\''  % (email,password);
-            result = cursor.execute(SQL);
+            params = (email, password);
+            SQL = 'Select email, password From user Where email = ? and password = ?';
+            result = cursor.execute(SQL, params);
             list = result.fetchall();
             con.close();
             if (len(list)) != 1: 
@@ -58,8 +63,9 @@ class DBUser():
             if (list[0][0] == email and list[0][1] == password):
                 return True;
             else: return False;
-        except:
-            print("transaction failed");
+        except Exception as e:
+            print("transaction failed: ");
+            print(e);
             return False;
 
     # Select a users id by email(username). Return False if no user found, else return the id.
@@ -69,12 +75,13 @@ class DBUser():
         try:
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
-            SQL = "Select userid From user Where email = '%s'"  % (email);
-            result = cursor.execute(SQL);
-            con.close();
+            params = (email,);
+            SQL = "Select userid From user Where email = ?";
+            result = cursor.execute(SQL,params);
             return result.fetchone();
-        except:
-            print("transaction failed");
+        except Exception as e:
+            print("transaction failed: ");
+            print(e);
             return False;
 
 class DBEvent():
