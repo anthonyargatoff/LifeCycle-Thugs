@@ -3,12 +3,13 @@ import sqlite3
 
 class DBUser():
 
-    DATABASE = "QuakeBase.db";
+    def __init__(self, dbLocation):
+        self.dbLocation = dbLocation;
 
     # Create a new tuple in user table with values email, password
-    def addUser(email, password):
+    def addUser(self, email, password):
         try:
-            con = sqlite3.connect("QuakeBase.db");
+            con = sqlite3.connect(self.dbLocation);
             cursor = con.cursor();
             params = (email, password);
             SQL = "Insert Into user(email,password) values(?,?)";
@@ -20,9 +21,9 @@ class DBUser():
             print(e);
     
     # Delete user tuple based on email
-    def deleteUser(email):
+    def deleteUser(self, email):
         try:
-            con = sqlite3.connect("QuakeBase.db");
+            con = sqlite3.connect(self.dbLocation);
             cursor = con.cursor();
             params = (email,);
             SQL = 'Delete From user Where email Like ?';
@@ -35,9 +36,9 @@ class DBUser():
 
     # modify user's email/password based on their userid, which must first be retrieved.
     # if only one field needs modifying, just pass the other as it was retrieved from the database  
-    def modifyUser(id, newEmail, newPassword):
+    def modifyUser(self, id, newEmail, newPassword):
         try:
-            con = sqlite3.connect("QuakeBase.db");
+            con = sqlite3.connect(self.dbLocation);
             cursor = con.cursor();
             params = (newEmail, newPassword, id);
             SQL = 'Update user Set email = ?, password = ? Where userid = ? ';
@@ -49,9 +50,9 @@ class DBUser():
             print(e);
 
     # return true if email/password combo is found in DB, else false. Also false on exception, so we can prompt user to try again.
-    def validateUser(email,password):
+    def validateUser(self, email,password):
         try:
-            con = sqlite3.connect("QuakeBase.db");
+            con = sqlite3.connect(self.dbLocation);
             cursor = con.cursor();
             params = (email, password);
             SQL = 'Select email, password From user Where email = ? and password = ?';
@@ -71,9 +72,9 @@ class DBUser():
     # Select a users id by email(username). Return False if no user found, else return the id.
     # Not sure if we need this. We could instead usse email as primary key and drop id. 
     # But as long as we have an id we should have a way to access it.
-    def selectUserId(email):
+    def selectUserId(self, email):
         try:
-            con = sqlite3.connect("QuakeBase.db");
+            con = sqlite3.connect(self.dbLocation);
             cursor = con.cursor();
             params = (email,);
             SQL = "Select userid From user Where email = ?";
@@ -84,22 +85,5 @@ class DBUser():
             print(e);
             return False;
 
-class DBEvent():
-
-    def addEvent():
-        try: 
-            con = sqlite3.connect("QuakeBase.db");
-            cursor = con.cursor();
-        except:
-            print();
-
-
-class DBNotification():
-    def addNotification():
-        try: 
-            con = sqlite3.connect("QuakeBase.db");
-            cursor = con.cursor();
-        except:
-            print();
 
 
