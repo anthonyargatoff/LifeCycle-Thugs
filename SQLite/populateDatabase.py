@@ -37,6 +37,3 @@ class populateDb:
             con.commit()
 
             f.close()
-
-# x = populateDb("SQLite/test.db", 'API/testdata/multipleLinesTest.txt')
-# x.populateAllTxtData()
