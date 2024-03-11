@@ -3,15 +3,18 @@ import sqlite3
 
 class DBUser():
 
-    DATABASE = "QuakeBase.db"
+    DATABASE = "QuakeBase.db";
 
     # Create a new tuple in user table with values email, password
     def addUser(email, password):
         try:
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
-            SQL = 'Insert Into user(email,password) values(\'%s\',\'%s\')'  % (email,password);
-            cursor.execute(SQL);
+            params = (email, password);
+            SQL = "Insert Into user(email,password) values(?,?)";
+            cursor.execute(SQL, params);
+            con.commit();
+            con.close();
         except:
             print("transaction failed");
     
@@ -20,8 +23,11 @@ class DBUser():
         try:
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
-            SQL = 'Delete From user Where email Like \'%s\''  % (email);
+            params = (email,);
+            SQL = 'Delete From user Where email Like ?';
             cursor.execute(SQL);
+            con.commit();
+            con.close();
         except:
             print("transaction failed");
 
@@ -33,6 +39,8 @@ class DBUser():
             cursor = con.cursor();
             SQL = 'Update user Set email = \'%s\', password = \'%s\' Where id = %s '  % (newEmail,newPassword,id);
             cursor.execute(SQL);
+            con.commit();
+            con.close();
         except:
             print("transaction failed");
 
@@ -43,16 +51,31 @@ class DBUser():
             cursor = con.cursor();
             SQL = 'Select email, password From user Where email = \'%s\' and password = \'%s\''  % (email,password);
             result = cursor.execute(SQL);
-            list = result.fetchall()
-            if (len(list)) != 2: 
+            list = result.fetchall();
+            con.close();
+            if (len(list)) != 1: 
                 return False;
-            if (list[0] == email and list[1] == password):
+            if (list[0][0] == email and list[0][1] == password):
                 return True;
             else: return False;
         except:
             print("transaction failed");
             return False;
 
+    # Select a users id by email(username). Return False if no user found, else return the id.
+    # Not sure if we need this. We could instead usse email as primary key and drop id. 
+    # But as long as we have an id we should have a way to access it.
+    def selectUserId(email):
+        try:
+            con = sqlite3.connect("QuakeBase.db");
+            cursor = con.cursor();
+            SQL = "Select userid From user Where email = '%s'"  % (email);
+            result = cursor.execute(SQL);
+            con.close();
+            return result.fetchone();
+        except:
+            print("transaction failed");
+            return False;
 
 class DBEvent():
 
@@ -61,10 +84,15 @@ class DBEvent():
             con = sqlite3.connect("QuakeBase.db");
             cursor = con.cursor();
         except:
-            print()
+            print();
 
 
-
-
+class DBNotification():
+    def addNotification():
+        try: 
+            con = sqlite3.connect("QuakeBase.db");
+            cursor = con.cursor();
+        except:
+            print();
 
 

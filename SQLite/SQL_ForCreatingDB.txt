@@ -1,9 +1,8 @@
 
 create table user(
-    userid Integer Auto_Increment,
+    userid INTEGER PRIMARY KEY,
     email Varchar(50) Unique,
-    password Varchar(50),
-    Primary Key (userid),
+    password Varchar(50)
 );
 
 -- Don't yet know how we will store these
@@ -11,22 +10,21 @@ create table user(
 -- parsing the strings into useable conditions would then fall to the program processing them.
 
 create table notification(
-    notifyid Integer Auto_Increment,
+    notifyid INTEGER PRIMARY KEY,
     userid Integer,
-    Primary Key (notifyid),
-    Foreign Key (userid) References user(userid),
+    Foreign Key (userid) References user(userid)
 );
 
 create table event(
-    eventid Integer Auto_Increment,
+    eventid INTEGER PRIMARY KEY,
     title Varchar(50),
+    url Varchar(255),
     magnitude Decimal(4,2),
     time DateTime,
-    tsunami Integer,
     latitude Decimal(8,4),
     longitude Decimal(8,4),
-    height Decimal(8,4),    -- need a better name for this 
-    Primary Key (eventid),
+    height Decimal(8,4)    -- need a better name for this (z coordinate)
+
 );
 
 
