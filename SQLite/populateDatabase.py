@@ -15,7 +15,13 @@ class populateDb:
         self.dbFileLocation = dbFileLocation
         self.txtFileLocation = txtFileLocation 
 
-    def populateAllTxtData(self, databaseTableName):     
+    def populateAllTxtData(self, databaseTableName):
+        """
+        Gets data from the text file and places it in the database.
+
+        Args:
+            databaseTableName (string): Name of the database table where results will go.
+        """          
         con = sqlite3.connect(self.dbFileLocation)
         cursor = con.cursor()
 

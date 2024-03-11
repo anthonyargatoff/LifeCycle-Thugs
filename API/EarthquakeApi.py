@@ -147,7 +147,7 @@ class EarthquakeApi:
                     startDate = "{}-{:02d}-01".format(year, month)
                     endDate = "{}-{:02d}-{}".format(year, month, numberOfDays)
 
-                    while 1:
+                    while 1: # Will keep trying to get data even if the ip is temporarily banned from making requests.
                         try:
                             # Get requests for API
                             response = requests.get("{}query?format=geojson&starttime={}&endtime={}".format(self.url, startDate, endDate)).json()
