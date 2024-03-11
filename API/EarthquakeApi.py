@@ -164,12 +164,12 @@ class EarthquakeApi:
                                 longitude = geometry["coordinates"][0]
                                 latitude = geometry["coordinates"][1]
                                 
-                                outfile.write("{};{};{};{};{};{}\n".format(title, event_time, mag, latitude, longitude, url)) # Use ";" as the deliminator
+                                outfile.write("{};{};{};{};{};{}\n".format(title, event_time, mag, latitude, longitude, url)) # Using ";" as the deliminator
 
                             break
 
                         except Exception as e:
-                            print("Error: {}\nRetrying in 1 minute\n".format(e))
+                            print("Max query limit reached. Error: {}\nRetrying in 1 minute\n".format(e))
                             time.sleep(60)
                             
             # Close the file
@@ -202,4 +202,4 @@ class EarthquakeApi:
         return data
 
 x = EarthquakeApi("https://earthquake.usgs.gov/fdsnws/event/1/")
-x.getParsedDataTXT("1568-01", "1573-01", "API/earthquakeData")
+x.getParsedDataTXT("1920-01", "1920-01", "API/earthquakeData")
