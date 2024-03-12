@@ -47,10 +47,15 @@ def create_app(test_config=None):
     
     @app.route('/login', methods=['GET', 'POST'])
     def new_login():
+        # check for post request
         if request.method == 'POST':
             email = request.form['email']
             pw = request.form['password']
             print(email, pw)
+            # need to figure out how to access the remember me checkbox
+            # next steps are to incorporate the database and setup credential validation
+            # from here redirect to the main page which is search page
+            return redirect('/search')
         return render_template('login.html')
     
     @app.route('/search')
