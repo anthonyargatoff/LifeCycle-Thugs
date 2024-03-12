@@ -1,6 +1,7 @@
 # The following code is the sample code setup code given in the flask application setup documentations
 
 import os
+import sys
 
 from flask import Flask, render_template, redirect, url_for, request
 
@@ -44,8 +45,12 @@ def create_app(test_config=None):
     # def login_page():
     #     return render_template('login.html')
     
-    @app.route('/login')
+    @app.route('/login', methods=['GET', 'POST'])
     def new_login():
+        if request.method == 'POST':
+            email = request.form['email']
+            pw = request.form['password']
+            print(email, pw)
         return render_template('login.html')
     
     @app.route('/search')
