@@ -1,6 +1,7 @@
 # The following code is the sample code setup code given in the flask application setup documentations
 
 import os
+import sys
 
 from flask import Flask, render_template, redirect, url_for, request
 
@@ -40,8 +41,37 @@ def create_app(test_config=None):
     def map_page():
         return render_template('map.html')
     
-    @app.route('/login')
-    def login_page():
+    # @app.route('/login')
+    # def login_page():
+    #     return render_template('login.html')
+    
+    @app.route('/login', methods=['GET', 'POST'])
+    def new_login():
+        # check for post request
+        if request.method == 'POST':
+            email = request.form['email']
+            pw = request.form['password']
+            print(email, pw)
+            # need to figure out how to access the remember me checkbox
+            # next steps are to incorporate the database and setup credential validation
+            # from here redirect to the main page which is search page
+            return redirect('/search')
         return render_template('login.html')
+    
+    @app.route('/search')
+    def search():
+        return render_template('Search.html')
+    
+    @app.route('/landing')
+    def landing_page():
+        return render_template('Landing.html')
+    
+    @app.route('/admin')
+    def admin_page():
+        return render_template('Admin.html')
+    
+    @app.route('/about')
+    def about_page():
+        return render_template('About.html')
 
     return app
