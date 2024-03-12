@@ -40,8 +40,28 @@ def create_app(test_config=None):
     def map_page():
         return render_template('map.html')
     
+    # @app.route('/login')
+    # def login_page():
+    #     return render_template('login.html')
+    
     @app.route('/login')
-    def login_page():
+    def new_login():
         return render_template('login.html')
+    
+    @app.route('/search')
+    def search():
+        return render_template('Search.html')
+    
+    @app.route('/landing')
+    def landing_page():
+        return render_template('Landing.html')
+    
+    @app.route('/admin')
+    def admin_page():
+        return render_template('Admin.html')
+    
+    @app.route('/about')
+    def about_page():
+        return render_template('About.html')
 
     return app

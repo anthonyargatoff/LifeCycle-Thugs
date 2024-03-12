@@ -5,17 +5,12 @@
 *.log
 *.gz
 *.DS_Store
-venv
-__pycache__
 .vscode
 .pytest_cache
 
 #Environments
 .venv
 
-<<<<<<< HEAD
 # Pycache
 __pycache__
 *.pyc
-=======
->>>>>>> refs/remotes/origin/main
