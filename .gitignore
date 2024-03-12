@@ -13,3 +13,9 @@ __pycache__
 #Environments
 .venv
 
+<<<<<<< HEAD
+# Pycache
+__pycache__
+*.pyc
+=======
+>>>>>>> refs/remotes/origin/main
