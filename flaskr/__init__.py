@@ -3,7 +3,7 @@
 import os
 import sys
 
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 
 
 def create_app(test_config=None):
@@ -56,6 +56,10 @@ def create_app(test_config=None):
         
         return render_template('login.html')
     
+    @app.route('/send_data', methods = ['GET'])
+    def send_data():
+        return jsonify({'some_data': 'fuck this shit im out'})
+    
     @app.route('/search')
     def search():
         return render_template('Search.html')
@@ -71,5 +75,8 @@ def create_app(test_config=None):
     @app.route('/about')
     def about_page():
         return render_template('About.html')
+    
+
+
 
     return app
