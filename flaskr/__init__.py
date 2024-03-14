@@ -58,7 +58,7 @@ def create_app(test_config=None):
     
     @app.route('/send_data', methods = ['GET'])
     def send_data():
-        return jsonify({'some_data': 'fuck this shit im out'})
+        return jsonify({'some_data': 'Hello World!'})
     
     @app.route('/search')
     def search():
