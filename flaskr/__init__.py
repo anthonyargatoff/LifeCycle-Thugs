@@ -3,7 +3,7 @@
 import os
 import sys
 
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 
 
 def create_app(test_config=None):
@@ -41,10 +41,6 @@ def create_app(test_config=None):
     def map_page():
         return render_template('map.html')
     
-    # @app.route('/login')
-    # def login_page():
-    #     return render_template('login.html')
-    
     @app.route('/login', methods=['GET', 'POST'])
     def new_login():
         # check for post request
@@ -55,8 +51,14 @@ def create_app(test_config=None):
             # need to figure out how to access the remember me checkbox
             # next steps are to incorporate the database and setup credential validation
             # from here redirect to the main page which is search page
+            # next steps for the redirect would be to include a payload to dynamically display public user data like their username
             return redirect('/search')
+        
         return render_template('login.html')
+    
+    @app.route('/send_data', methods = ['GET'])
+    def send_data():
+        return jsonify({'some_data': 'Hello World!'})
     
     @app.route('/search')
     def search():
@@ -73,5 +75,8 @@ def create_app(test_config=None):
     @app.route('/about')
     def about_page():
         return render_template('About.html')
+    
+
+
 
     return app
