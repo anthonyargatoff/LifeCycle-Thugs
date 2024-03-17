@@ -25,6 +25,15 @@ class test_DBManager(unittest.TestCase):
         self.User.deleteUser('AAAA');
         result = self.cursor.execute("Select * From user Where email = 'AAAA'");
         self.assertEqual(result.fetchone(), None);
+    
+    def test_d_ModifyUser(self):
+        self.User.modifyUser(2,'changed','alsochanged');
+        self.assertTrue(self.User.validateUser('changed','alsochanged'));
+        self.User.modifyUser(2,'aaaaa','bbbbbb');
+    
+    def test_e_SelectUserId(self):
+        id = self.User.selectUserId('CCCC');
+        self.assertEqual(id[0],4)
 
     def tearDown(self):
         self.cursor.execute("Delete From user Where email = 'Sample@test.com'");
