@@ -2,7 +2,7 @@
 CREATE TABLE earthquake (
     earthquakeid INTEGER PRIMARY KEY,
     title VARCHAR(50),
-    time datetime,
+    eventTime datetime,
     magnitude decimal (6, 4),
     latitude decimal (9, 6),
     longitude decimal (9, 6),
