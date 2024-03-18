@@ -12,7 +12,6 @@ class test(unittest.TestCase):
 
     # Tests the parsing and initialization
     def testInit(self):
-        print(self.t1.minMagnitude)
         self.assertEqual(self.t1.minMagnitude, 0)
         self.assertEqual(self.t1.maxMagnitude, 5.15)
         self.assertEqual(self.t1.latitude, 11.54)
