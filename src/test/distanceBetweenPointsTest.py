@@ -6,7 +6,7 @@ class test(unittest.TestCase):
 
     # Got hard-coded data from https://www.omnicalculator.com/other/latitude-longitude-distance
 
-    def testGetDistanceMiles(self):
+    def testGetDistanceKilometers(self):
         
         self.assertEqual(math.ceil(coordinateCalculator.getDistanceKilometers(61, 100, 60, 100)), 112)
         self.assertEqual(math.ceil(coordinateCalculator.getDistanceKilometers(9, 77, 4, 12)), 7195)
