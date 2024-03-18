@@ -21,4 +21,6 @@ create table notification(
     userid Integer,
     attributes varchar(255),
     Foreign Key (userid) References user(userid)
+        On Delete Cascade
+        On Update Cascade
 );
