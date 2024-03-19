@@ -36,9 +36,17 @@ class test_DBManager(unittest.TestCase):
         self.notify.modifyNotification(4,'Changed');
         result = self.con.execute("Select attributes From notification where attributes = 'Changed'");
         self.assertEqual(result.fetchall(),[('Changed',)]);
+    
+    def test_e_Cascade(self):
+        self.con.execute("Insert into User(userid,email,password) values(9,'test','cascade')");
+        self.con.execute("Insert into notification(userid,attributes) values(9,'atts')");
+        self.con.execute("Delete From User Where userid = 9")
+        result = self.con.execute('Select attributes From notification where userid = 9');
+        self.assertEqual(result.fetchall(),[]);
 
     def tearDown(self):
         self.cursor.execute("Delete From notification");
+        self.cursor.execute("Delete From User Where userid = 9");
         self.con.commit()
         self.con.close();
 
