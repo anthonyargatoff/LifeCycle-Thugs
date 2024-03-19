@@ -1,7 +1,7 @@
 import sqlite3;
 import DBManager;
 
-x = DBManager.DBUser('QuakeBase.db');
+x = DBManager.DBUser('TestUser.db');
 
 # test validate
 print('Running');
@@ -23,7 +23,9 @@ else: print('Passed Delete');
 
 # test select user id
 id = x.selectUserId('aaaa');
-if (id[0] == 1):
+if (id == False): 
+    print('Failed Id Select');
+elif (id[0] == 1):
     print('Passed Id Select');
 else: print('Failed Id Select');
 
