@@ -14,6 +14,7 @@ class test_DBManager(unittest.TestCase):
         self.cursor.execute("Insert into notification(userid,attributes) values(2,'TestGet')");
         self.cursor.execute("Insert into notification(userid,attributes) values(2,'TestGet2')");
         self.cursor.execute("Insert into notification(userid,attributes) values(1,'TestDelete')");
+        self.cursor.execute("Insert into notification(userid,attributes) values(1,'TestNotify')");
         self.notify = NM.DBNotification("TestNotify.db");
         self.con.commit();
 
@@ -31,12 +32,13 @@ class test_DBManager(unittest.TestCase):
         result = self.con.execute('Select attributes From notification where notifyid = 3');
         self.assertEqual(result.fetchall(),[]);
     
-    
+    def test_d_ModifyNotification(self):
+        self.notify.modifyNotification(4,'Changed');
+        result = self.con.execute("Select attributes From notification where attributes = 'Changed'");
+        self.assertEqual(result.fetchall(),[('Changed',)]);
 
     def tearDown(self):
-        self.cursor.execute("Delete From notification Where attributes = 'TestAdd'");
-        self.cursor.execute("Delete From notification Where attributes = 'TestDelete'");
-        self.cursor.execute("Delete From notification Where userid = 2");
+        self.cursor.execute("Delete From notification");
         self.con.commit()
         self.con.close();
 
