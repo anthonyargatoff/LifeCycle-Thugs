@@ -10,6 +10,7 @@ class DBUser():
     def addUser(self, email, password):
         try:
             con = sqlite3.connect(self.dbLocation);
+            con.execute("PRAGMA foreign_keys = 1");      # enforces foreign keys
             cursor = con.cursor();
             params = (email, password);
             SQL = "Insert Into user(email,password) values(?,?)";
@@ -24,6 +25,7 @@ class DBUser():
     def deleteUser(self, email):
         try:
             con = sqlite3.connect(self.dbLocation);
+            con.execute("PRAGMA foreign_keys = 1");      # enforces foreign keys
             cursor = con.cursor();
             params = (email,);
             SQL = 'Delete From user Where email Like ?';
@@ -39,6 +41,7 @@ class DBUser():
     def modifyUser(self, id, newEmail, newPassword):
         try:
             con = sqlite3.connect(self.dbLocation);
+            con.execute("PRAGMA foreign_keys = 1");      # enforces foreign keys
             cursor = con.cursor();
             params = (newEmail, newPassword, id);
             SQL = 'Update user Set email = ?, password = ? Where userid = ? ';
