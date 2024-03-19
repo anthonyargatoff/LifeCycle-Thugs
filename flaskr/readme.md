@@ -12,15 +12,18 @@ Before proceeding, ensure you have the following installed:
 1. Clone the repository to your local machine:
 git clone <repository_url>
 
-2. Navigate to the Flask directory:
-cd <flask_directory>
+2. setup virtual environment:
+initially when you don't have a virtual environment
+run this command to create one: python -m venv .venv
 
-3. Install dependencies using pip: pip install -r requirements.txt
+3. after/if you have a virtual environment run the following command to activate the virtual environment: on windows: .venv\Scripts\activate, on max/linux: source .venv/bin/activate
+
+4. Install dependencies using pip: pip install -r requirements.txt
 
 
 ## Starting the Application
 1. Navigate to the Flask directory if you're not already there.
-2. Run the Flask application using the following command: python app.py
+2. Run the Flask application using the following command: flask --app flaskr run --debug
 
 3. The Flask application should now be running. You should see output similar to:
  Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
