@@ -97,13 +97,3 @@ class DBNotification():
             print("transaction failed: ");
             print(e);
 
-
-"""
-create table notification(
-    notifyid INTEGER PRIMARY KEY,
-    userid Integer,
-    attributes varchar(255),
-    Foreign Key (userid) References user(userid)
-);
-
-"""
