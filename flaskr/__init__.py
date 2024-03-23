@@ -2,8 +2,9 @@
 import sqlite3
 import os
 import sys
+import flask_login
+from flask import Flask, render_template, redirect, url_for, request, jsonify, session
 
-from flask import Flask, render_template, redirect, url_for, request, jsonify
 
 def create_app(test_config=None):
     # create and configure the app
@@ -25,6 +26,14 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    # login manager for login states / sessions
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.get(user_id)
 
     # root page
     @app.route('/')
@@ -52,7 +61,11 @@ def create_app(test_config=None):
             email = request.form['email']
             pw = request.form['password']
             if (db_user.validateUser(email, pw)):
-                print('User validated')
+                login_user(user)
+                flask.flash('Logged in successfully.')
+                next = flask.request.args.get('next')
+                if not url_has_allowed_host_and_scheme(next, request.host):
+                    return flask.abort(400)
             else:
                 print('User not validated')
             # need to figure out how to access the remember me checkbox

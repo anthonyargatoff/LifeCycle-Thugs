@@ -11,6 +11,12 @@
 <body>
   <!-- Navbar Component -->
   {% include 'navbar.html' %}
+  {% if current_user.is_authenticated %}
+  Hi {{ current_user.name }}!
+  {% else %}
+  Hi Stranger!
+  {% endif %}
+
 
     <!-- Form Component-->
     <main class="container form-signin w-100 m-auto text-center vh-100">

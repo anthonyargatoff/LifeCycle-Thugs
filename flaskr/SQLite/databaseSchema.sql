@@ -24,3 +24,5 @@ create table notification(
         On Delete Cascade
         On Update Cascade
 );
+
+INSERT INTO user (userId, email, password) VALUES (1, "test@test", "Test1234!");
