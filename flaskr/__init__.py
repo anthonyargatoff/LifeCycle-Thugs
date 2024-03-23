@@ -1,10 +1,9 @@
 # The following code is the sample code setup code given in the flask application setup documentations
-
+import sqlite3
 import os
 import sys
 
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-
 
 def create_app(test_config=None):
     # create and configure the app
@@ -43,16 +42,24 @@ def create_app(test_config=None):
     
     @app.route('/login', methods=['GET', 'POST'])
     def new_login():
+        # import database access
+        from flaskr.SQLite.DBManager import DBUser
+        db_user = "db_user"
+        db_user = DBUser(sqlite3.connect("test.db"))
+
         # check for post request
         if request.method == 'POST':
             email = request.form['email']
             pw = request.form['password']
-            print(email, pw)
+            if (db_user.validateUser(email, pw)):
+                print('User validated')
+            else:
+                print('User not validated')
             # need to figure out how to access the remember me checkbox
             # next steps are to incorporate the database and setup credential validation
             # from here redirect to the main page which is search page
             # next steps for the redirect would be to include a payload to dynamically display public user data like their username
-            return redirect('/search')
+            # return redirect('/search')
         
         return render_template('login.html')
     
@@ -75,8 +82,5 @@ def create_app(test_config=None):
     @app.route('/about')
     def about_page():
         return render_template('About.html')
-    
-
-
 
     return app
