@@ -13,6 +13,7 @@ CREATE TABLE earthquake (
 CREATE TABLE user (
     userid INTEGER PRIMARY KEY,
     email Varchar(100) Unique,
+    adminStatus Integer,    -- 0 for false 1 for true
     password Varchar(100)
 );
 
