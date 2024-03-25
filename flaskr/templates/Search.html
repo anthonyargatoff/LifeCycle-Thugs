@@ -15,44 +15,17 @@
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-    <!-- Navbar Component -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="Landing.html">QuakeQuest</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="Landing.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Search.html">Search</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="About.html">About</a>
-          </li>
-          <!-- needs to be dynamically updated if logged in-->
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Sign In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
+  <!-- Navbar Component -->
+  {% include 'navbar.html' %}
 
   <!-- Grid container-->
-  <div class="container-fluid vh-100">
+  <div class="container-fluid vh-95">
     <!-- Row 1: filter and map-->
-    <div class="row">
+    <div class="row row-cols-auto h-75">
       <!-- Filter List Component-->
-      <div class="col-3 justify-content-start">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 380px;">
+      <div class="col col-sm-3 justify-content-start">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
           <span class="fs-4">Search</span>
           <hr>
           <div class="input-group">
@@ -61,8 +34,7 @@
             <button type="button" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
           </div>
           <!-- Event List Component-->
-          <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary overflow-auto"
-            style="width: 380px; height: 75vh">
+          <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary overflow-auto" style="height: 38em;">
             <h2 class="fs-5 fw-semibold" style="margin: 1em; text-align: center;">Seismic Events</h2>
             <div class="list-group list-group-flush border-bottom">
 
@@ -71,7 +43,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small>Wed</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -79,7 +51,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Tues</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -87,7 +59,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Mon</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
@@ -95,7 +67,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Wed</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -103,7 +75,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Tues</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -111,7 +83,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Mon</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
@@ -119,7 +91,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Wed</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -127,7 +99,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Tues</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -135,7 +107,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Mon</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
@@ -143,7 +115,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Wed</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
 
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -151,7 +123,7 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Tues</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
               
               <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
@@ -159,16 +131,15 @@
                   <strong class="mb-1">List group item heading</strong>
                   <small class="text-body-secondary">Mon</small>
                 </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
+                <div class="mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
               </a>
             </div>
           </div>
         </div>
       </div>
       <!-- Map element-->
-      <div class="col-9" id="map">
-      </div>
-    </div>
+      <div class="col d-flex col-sm-9 d-block" id="map" style="height: 60em; width: 90em;"></div>
+    </div> <!-- Row -->
     <!-- Row 2: event details table -->
     <div class="row">
       <div class="col-12">
@@ -209,7 +180,7 @@
       </ul>
     </footer>
   </div>
-  <div class="d-flex" id="map"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
