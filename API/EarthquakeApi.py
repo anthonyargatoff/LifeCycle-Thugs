@@ -153,8 +153,8 @@ class EarthquakeApi:
 
             for year in range(startYear, endYear + 1):
                 for month in range(1, 13):
-                    if year == endYear and month > endMonth: # If the date is larger than the requested date, program stops
-                        break
+                    if (year == endYear and month > endMonth) or (year == startYear and month < startMonth): # Ensure date is in bounds of query
+                        continue
                     numberOfDays = calendar.monthrange(year, month)[1] # gets the number of days in the current month
                     startDate = "{}-{:02d}-01".format(year, month)
                     endDate = "{}-{:02d}-{}".format(year, month, numberOfDays)
@@ -215,4 +215,4 @@ class EarthquakeApi:
         return data
 
 x = EarthquakeApi("https://earthquake.usgs.gov/fdsnws/event/1/")
-x.getParsedDataTXT("2022-02", "2024-02", "API/eventData")
+x.getParsedDataTXT("2022-03", "2024-02", "API/eventData")
