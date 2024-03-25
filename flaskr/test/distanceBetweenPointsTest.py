@@ -15,5 +15,5 @@ class test(unittest.TestCase):
     def testGetDistanceMiles(self):
         self.assertEqual(math.ceil(coordinateCalculator.getDistanceMiles(61, 100, 60, 100)), 70)
         
-
-unittest.main()
+if __name__ == "__main__":
+    unittest.main()
