@@ -1,8 +1,16 @@
 from flaskr.distanceBetweenPoints.distanceBetweenPoints import coordinateCalculator
 
 class Notification:
-
+    """
+    Determines whether or not a notification should be sent to a user
+    """
     def __init__(self, dbAttributes: str):
+        """
+        Initialization automatically parses input.
+
+        Args:
+            dbAttributes (str): Attributes string from the database in format : magnitude:3-6;area:14,35,44; -- area is lat, lon, radius
+        """        
 
         # Define all the variables, then check if they exist
         self.minMagnitude = None
@@ -28,20 +36,60 @@ class Notification:
                 self.latitude, self.longitude, self.radius = float(location[0]), float(location[1]), float(location[2])
 
     def isMagnitudeSet(self)->bool:
+        """
+        Determines if a user has set a notification for magnitude.
+
+        Returns:
+            bool: Returns true if a magnitude is set.
+        """        
         return (self.maxMagnitude != None and self.minMagnitude !=None)
     
     def isDistanceSet(self)->bool:
+        """
+        Determines if a user has set a notification for area. 
+
+        Returns:
+            bool: Returns true if an area has been set.
+        """        
         return (self.latitude != None and self.longitude != None and self.radius != None)
     
-    def compareMagnitude(self, magnitude)->bool:
-           return (magnitude > self.minMagnitude and magnitude < self.maxMagnitude)
+    def compareMagnitude(self, magnitude:float)->bool:
+        """
+        Compares user's notification setting of magnitude to the new incoming data
 
-    def compareDistance(self, latitude, longitude)->bool:
+        Args:
+            magnitude (float): A float value for magnitude size
+
+        Returns:
+            bool: Returns true if the user's setting matches argument
+        """           
+        return (magnitude > self.minMagnitude and magnitude < self.maxMagnitude)
+
+    def compareDistance(self, latitude:float, longitude:float)->bool:
+        """
+        Compares user's notification setting of area to the new incoming data
+
+        Args:
+            latitude (float): Float of latitude
+            longitude (float): float of longitude
+
+        Returns:
+            bool: Returns true if the user's setting matches the argument
+        """        
         return (coordinateCalculator.getDistanceKilometers(self.latitude, self.longitude, latitude, longitude) <= self.radius)
 
-    def compareNewEvent(self, magnitude, latitude, longitude) -> bool:
-        # print ("magnitude set{}\n------\ndistance set {}".format(self.isMagnitudeSet(), self.isDistanceSet()))
+    def compareNewEvent(self, magnitude:float, latitude:float, longitude:float) -> bool:
+        """
+        Given arguments of magnitude, latitude, and longitude, this method will return true if all parameters are met
 
+        Args:
+            magnitude (float): Float of magnitude size
+            latitude (float): Float of latitude
+            longitude (float): Float of longitude
+
+        Returns:
+            bool: Returns true if all parameters are met
+        """
         if (self.isMagnitudeSet() and not self.isDistanceSet()):
             if(magnitude):
                 return self.compareMagnitude(magnitude)
