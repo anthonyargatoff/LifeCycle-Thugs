@@ -1,0 +1,10 @@
+M 6.4 - 47 km NNE of Timbiquí, Colombia;-1575351192710;6.35;3.156;-77.469;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgem912416&format=geojson
+M 5.5 - 21 km SSE of Point Roberts, Washington;-1575910244000;5.5;48.8;-123;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ushis657&format=geojson
+M ? - 204 km NNE of Lospalos, Timor Leste;-1576275455920;None;-6.745;127.508;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgemsup912408&format=geojson
+M 5.9 - 116 km W of Tenn?, Japan;-1576473110050;5.86;40.059;138.614;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgemsup912407&format=geojson
+M 6.2 - 155 km ESE of Kimbe, Papua New Guinea;-1576747294730;6.22;-5.883;151.501;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgem912404&format=geojson
+M ? - 111 km W of Buala, Solomon Islands;-1576803561100;None;-8.204;158.583;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgemsup912403&format=geojson
+M 6.0 - Volcano Islands, Japan region;-1576923605860;6.04;23.239;144.145;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgem912401&format=geojson
+M 5.7 - 100 km N of ?ile, Turkey;-1577188865680;5.71;42.074;29.509;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgemsup912399&format=geojson
+M 6.3 - 5 km NE of Ejido la Piña (Maromilla), Mexico;-1577648263120;6.32;19.062;-96.739;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=iscgem912397&format=geojson
+M 5.0 - 16 km NW of Julian, California;-1577913900000;5;33.2;-116.7;https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=ushis656&format=geojson
