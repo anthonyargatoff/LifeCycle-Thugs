@@ -1,15 +1,14 @@
 # Import package
 import sqlite3;
 import unittest;
-from populateDatabase import populateDb
 
 class test_SQLite(unittest.TestCase):
 
     # create connection and cursor
     def setUp(self):
-        self.con = sqlite3.connect("test.db");
+        self.con = sqlite3.connect("testdata/test.db");
         self.cursor = self.con.cursor();
-
+        self.con.commit();
 
     #no test for just select, but all tests use select.
 
@@ -30,7 +29,7 @@ class test_SQLite(unittest.TestCase):
         self.cursor.execute("Insert Into T1 values(5,'fifth'),(6,'sixth'),(7,'seventh')");
         result = self.cursor.execute("Select * From T1 Where id > 3");
         self.assertEqual(result.fetchall(), [(5, 'fifth'), (6, 'sixth'), (7, 'seventh')]);
-        self.cursor.execute("Delete From T1 Where id > 3");
+        self.cursor.execute("Delete From T1 Where id > 0");
     
     def tearDown(self):
         self.con.close();
