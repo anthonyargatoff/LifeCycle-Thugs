@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 class populateDb:
     """
@@ -31,7 +32,8 @@ class populateDb:
             for line in lines:
                 split = line.split(';') # split into array of 7
                 title = split[0]
-                time = split[1]
+                ts = int(split[1]) / 1000 # from unix time ms to seconds
+                time = datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
                 magnitude = split[2]
                 latitude = split[3]
                 longitude = split[4]
@@ -44,6 +46,3 @@ class populateDb:
             con.commit()
 
             f.close()
-
-x = populateDb("flaskr/main.db", 'flaskr/eventData/2022-03_to_2024-02.txt')
-x.populateAllTxtData('earthquake')
