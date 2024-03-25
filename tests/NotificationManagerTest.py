@@ -2,7 +2,12 @@
 # Import packages
 import sqlite3;
 import unittest;
-import NotificationManager as NM;
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath('..'))
+
+from flaskr import NotificationManager as NM;
 
 
 class test_DBManager(unittest.TestCase):

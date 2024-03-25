@@ -2,7 +2,12 @@
 # Import package
 import sqlite3;
 import unittest;
-import DBManager as DBM;
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath('..'))
+
+from flaskr import DBManager as DBM;
 
 class test_DBManager(unittest.TestCase):
 

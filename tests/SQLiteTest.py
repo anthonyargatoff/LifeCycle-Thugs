@@ -1,7 +1,7 @@
 # Import package
 import sqlite3;
 import unittest;
-from populateDatabase import populateDb
+
 
 class test_SQLite(unittest.TestCase):
 
