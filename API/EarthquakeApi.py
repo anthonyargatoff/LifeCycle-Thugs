@@ -133,11 +133,23 @@ class EarthquakeApi:
         startYear = int(startYear)
         startMonth = int(startMonth)
 
-        if os.path.exists("earthquakeJsonData/earthquakesParsed.txt"):
-            os.remove("earthquakeJsonData/earthquakesParsed.txt")
+        eventString = "{}/{}-{:02d}_to_{}-{:02d}.txt".format(fileLocation, startYear, startMonth, endYear, endMonth)
 
-        # Opens the json file for writing
-        with open("{}/earthquakesParsed.txt".format(fileLocation), "w") as outfile:
+        # If file already exists, remove it and re-download newer version
+        if os.path.exists(eventString):
+            os.remove(eventString)
+
+        # Create the directory if needed
+        if (os.path.isdir(fileLocation)):
+            pass
+        else:
+            os.mkdir(fileLocation)
+
+        # Keeps track of amount of requests
+        queryAmount = 1
+
+        # Opens the text file for writing
+        with open(eventString, "w") as outfile:
 
             for year in range(startYear, endYear + 1):
                 for month in range(1, 13):
@@ -151,8 +163,9 @@ class EarthquakeApi:
                         try:
                             # Get requests for API
                             response = requests.get("{}query?format=geojson&starttime={}&endtime={}".format(self.url, startDate, endDate)).json()
-                            print("{}query?format=geojson&starttime={}&endtime={}".format(self.url, startDate, endDate))
-                            
+                            print("Query count: {} -- {}query?format=geojson&starttime={}&endtime={}".format(queryAmount, self.url, startDate, endDate))
+                            queryAmount += 1
+
                             # Parses the data we require
                             for feature in response["features"]:
                                 properties = feature["properties"]
@@ -169,8 +182,8 @@ class EarthquakeApi:
                             break
 
                         except Exception as e:
-                            print("Max query limit reached. Error: {}\nRetrying in 1 minute\n".format(e))
-                            time.sleep(60)
+                            print("Max query limit reached. Error: {}\nRetrying in 6 minutes\n".format(e))
+                            time.sleep(420)
                             
             # Close the file
             outfile.close()
@@ -202,4 +215,4 @@ class EarthquakeApi:
         return data
 
 x = EarthquakeApi("https://earthquake.usgs.gov/fdsnws/event/1/")
-x.getParsedDataTXT("1920-01", "1920-01", "API/earthquakeData")
+x.getParsedDataTXT("2022-02", "2024-02", "API/eventData")
