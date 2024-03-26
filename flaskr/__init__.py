@@ -76,7 +76,9 @@ def create_app(test_config=None):
     def about_page():
         return render_template('About.html')
     
-
+    @app.route('/accountmanagement')
+    def accountmanager_page():
+        return render_template('accountManagement.html')
 
 
     return app
