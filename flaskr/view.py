@@ -5,7 +5,7 @@ view = Blueprint('view', __name__)
 
 @view.route('/send_data', methods = ['GET'])
 def send_data():
-    return jsonify({'some_data': 'Hello World!', 'Kelowna': [49.88, 119.49], 'Vancouver': [49.28, 129.12]})
+    return jsonify({'some_data': 'Hello World!', 'Kelowna': [49.88, -119.49], 'Vancouver': [49.28, -129.12]})
 
 @view.route('/search')
 def search():
