@@ -58,7 +58,7 @@ def create_app(test_config=None):
     
     @app.route('/send_data', methods = ['GET'])
     def send_data():
-        return jsonify({'some_data': 'Hello World!'})
+        return jsonify({'some_data': 'Hello World!', 'Kelowna': [49.88, 119.49], 'Vancouver': [49.28, 129.12]})
     
     @app.route('/search')
     def search():
