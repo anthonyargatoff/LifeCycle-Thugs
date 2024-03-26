@@ -11,12 +11,12 @@ def send_email(body:str, recipient:str):
         body (str): message body
         recipient (str): recipient
     """
-    port = 587  # For starttls
-    smtp_server = "smtp.gmail.com"
+    port = 587;
+    smtp_server = "smtp.gmail.com";
 
     # email and app password for the gmail sending the emails.
-    sender_email = "quakebot9000@gmail.com"
-    password = 'lwdvrqlzofwlgfll'
+    sender_email = "quakebot9000@gmail.com";
+    password = 'lwdvrqlzofwlgfll';
     subject = "QuakeQuest Notification";
 
 
