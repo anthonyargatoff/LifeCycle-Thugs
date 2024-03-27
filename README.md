@@ -48,3 +48,7 @@ Below are the lists of requirements.
 - then click on the link that the previous command generates and the app will start running in your default browser
 
 - Also if you have the line server extension installed you can just open the __init__.py file and then run the extension and it will open your file directory in your browser, from here navigate to the templates folder and click on any of the html pages to get to the app.
+
+
+### Running the production server:
+- you can run the main.py file that exists outside of the flaskr directory

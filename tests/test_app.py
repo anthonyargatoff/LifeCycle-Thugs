@@ -31,7 +31,7 @@ def test_login_form_redirect(client):
         "password":"1234"
     }
 
-    client.get('/login')
+    response = client.get('/login')
     response = client.post('/login', data=form_data)
 
     # then check that redirect is made
@@ -52,3 +52,5 @@ def test_data_points_sent(client):
 
     for key, val in data_sent.items():
         assert key in res_data and val == res_data[key]
+
+    assert response.status_code == 200
