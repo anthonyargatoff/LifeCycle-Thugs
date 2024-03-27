@@ -31,7 +31,7 @@ def test_login_form_redirect(client):
         "password":"1234"
     }
 
-    client.get('/login')
+    response = client.get('/login')
     response = client.post('/login', data=form_data)
 
     # then check that redirect is made
